@@ -117,6 +117,10 @@ header {
   
   .contenido {
     padding: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:auto ;
+    text-align: center;
   }
   
   h1 {
@@ -126,14 +130,14 @@ header {
   }
   
   button {
-    background: #007bff;
-    color: #fff;
+    background: #FFFFFF;
+    color: #F27294;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 10px 30px;
+    border-radius: 40px;
     margin-right: 10px;
     text-align:right;
-
+    font-weight: bold;
   }
   
   button:last-of-type {
@@ -167,4 +171,5 @@ header {
     text-decoration: none;
     color: #ffffff00;
   }
+
   
