@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a1e3709f1d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?key=" async defer></script>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/clases.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logoff2.png" sizes="any" type="image/svg+xml">
+
+    <title>Food Finder - Motoristas</title>
+</head>
+
+<body>
+    <header>
+        <div id="botones-header">
+            <i class="fa-solid fa-arrow-left" onclick="irAtras();"></i>
+            <i class="fa-solid fa-user-pen" onclick="editUser();"></i>
+            <a href="login.html" onclick="cerrarSesion();"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+        </div>
+        <img id="logo" src="img/logoff.png" alt="logo">
+    </header>
+
+    <div class="contenedor">
+        <section id="section-principal" class="row">
+            <div class="titulo-section px-1">Órdenes</div>
+            <div class="col-xl-4 col-12 p-2">
+                <div class="contenedor-boton"><button class="boton boton-naranja botones-principales" onclick="cambiarSection(1);">Órdenes disponibles</button></div>
+            </div>
+            <div class="col-xl-4 col-12 p-2">
+                <div class="contenedor-boton"><button class="boton boton-naranja botones-principales" onclick="cambiarSection(2);">Órdenes sin entregar</button></div>
+            </div>
+            <div class="col-xl-4 col-12 p-2">
+                <div class="contenedor-boton"><button class="boton boton-naranja botones-principales" onclick="cambiarSection(3);">Órdenes entregadas</button></div>
+            </div>
+        </section>
+
+        
+        <section id="section-1" class="borde-naranja">
+            
+        </section>
+
+        <section id="section-2" class="borde-naranja">
+            
+        </section>
+
+        <section id="section-3" class="borde-naranja">
+            
+        </section>
+
+
+        <section id="section-1-1" class="borde-naranja py-3 mx-auto">
+            
+        </section>
+
+        <section id="section-2-1" class="borde-naranja py-3 mx-auto">
+            
+        </section>
+
+        <section id="section-3-1" class="borde-naranja py-3 mx-auto">
+            
+        </section>
+    </div>
+    
+    <footer>
+        <div id="redes-footer">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-tiktok"></i>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content borde-rojo radius-2">
+                <div id="modal-body-repartidor" class="modal-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content borde-rojo radius-2">
+                <div id="modal-body-repartidor2" class="modal-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="js/script.js"></script>
+<script src="js/login.js"></script>
+<script src="js/mapa.js"></script>
+</html>
