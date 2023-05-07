@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.23.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -27,9 +27,9 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/clases.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/logoff2.png" sizes="any" type="image/svg+xml">
+    <link rel="icon" href="img/logoff.png" sizes="any" type="image/svg+xml">
 
-    <title>Food Finder - Motoristas</title>
+    <title>Repartidores | Food Finder</title>
 </head>
 
 <body>
@@ -46,55 +46,46 @@
         <section id="section-principal" class="row">
             <div class="titulo-section px-1">Órdenes</div>
             <div class="col-xl-4 col-12 p-2">
-                <div class="contenedor-boton"><button class="boton boton-naranja botones-principales" onclick="cambiarSection(1);">Órdenes disponibles</button></div>
+                <div class="contenedor-boton"><button class="boton boton1 botones-principales" onclick="cambiarSection(1);">Órdenes disponibles</button></div>
             </div>
             <div class="col-xl-4 col-12 p-2">
-                <div class="contenedor-boton"><button class="boton boton-naranja botones-principales" onclick="cambiarSection(2);">Órdenes sin entregar</button></div>
+                <div class="contenedor-boton"><button class="boton boton1 botones-principales" onclick="cambiarSection(2);">Órdenes sin entregar</button></div>
             </div>
             <div class="col-xl-4 col-12 p-2">
-                <div class="contenedor-boton"><button class="boton boton-naranja botones-principales" onclick="cambiarSection(3);">Órdenes entregadas</button></div>
+                <div class="contenedor-boton"><button class="boton boton1 botones-principales" onclick="cambiarSection(3);">Órdenes entregadas</button></div>
             </div>
         </section>
 
         
-        <section id="section-1" class="borde-naranja">
+        <section id="section-1" class="borde">
             
         </section>
 
-        <section id="section-2" class="borde-naranja">
+        <section id="section-2" class="borde">
             
         </section>
 
-        <section id="section-3" class="borde-naranja">
+        <section id="section-3" class="borde">
             
         </section>
 
 
-        <section id="section-1-1" class="borde-naranja py-3 mx-auto">
+        <section id="section-1-1" class="borde py-3 mx-auto">
             
         </section>
 
-        <section id="section-2-1" class="borde-naranja py-3 mx-auto">
+        <section id="section-2-1" class="borde py-3 mx-auto">
             
         </section>
 
-        <section id="section-3-1" class="borde-naranja py-3 mx-auto">
+        <section id="section-3-1" class="borde py-3 mx-auto">
             
         </section>
     </div>
-    
-    <footer>
-        <div id="redes-footer">
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-tiktok"></i>
-        </div>
-    </footer>
 
     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content borde-rojo radius-2">
+            <div class="modal-content borde radius-2">
                 <div id="modal-body-repartidor" class="modal-body">
                     
                 </div>
@@ -104,7 +95,7 @@
 
     <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content borde-rojo radius-2">
+            <div class="modal-content borde radius-2">
                 <div id="modal-body-repartidor2" class="modal-body">
                     
                 </div>

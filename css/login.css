@@ -1,5 +1,9 @@
+@font-face {
+  font-family: 'Baloo2';
+  src: url('/fonts/baloo-2/Baloo2-Regular.ttf');
+}
+
 body {
-  font-family: 'cabin';
   background: linear-gradient(206deg, white 0, #5BC0EB 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -149,16 +153,6 @@ hr {
       left: auto;
       right: 10vw;
       top: 30px;
-  }
-
-  #copyright {
-      font-size: 18px;
-  }  
-}
-
-@media screen and (min-width: 1172px) {
-  #copyright {
-      font-size: 22px;
   }
 }
 

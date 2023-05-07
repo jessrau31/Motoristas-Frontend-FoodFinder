@@ -1,7 +1,7 @@
 function verificarSesion() {
     axios({
         method: 'get',
-        url: `http://localhost:4200/sesiones/${idSession}`,
+        url: `http://localhost:4201/sesiones/${idSession}`,
     })
         .then(res => {
             if (res.data.codigo == 0) {
@@ -13,15 +13,15 @@ function verificarSesion() {
 function cerrarSesion() {
     axios({
         method: 'get',
-        url: `http://localhost:4200/sesiones/cerrar/${idSession}`
+        url: `http://localhost:4201/sesiones/cerrar/${idSession}`
     })
 }
 
 function llamarModal(orden) {
     if (orden == 'hide') {
-        modalRepartidor.parentNode.classList.add('borde-naranja');
-        modalRepartidor.parentNode.classList.remove('borde-verde');
-        modalRepartidor.parentNode.classList.remove('borde-rojo');
+        modalRepartidor.parentNode.classList.add('borde');
+        modalRepartidor.parentNode.classList.remove('borde');
+        modalRepartidor.parentNode.classList.remove('borde');
     }
     $('#modal').modal(orden);
 }
@@ -30,11 +30,11 @@ function cambiarSection(valor) {
     let sectionActual = document.getElementById(`section-${valor}`);
     switch (valor) {
         case 1:
-            sectionActual.innerHTML = '<div class="titulo-section borde-naranja px-1">Órdenes disponibles</div>';
+            sectionActual.innerHTML = '<div class="titulo-section borde px-1">Órdenes disponibles</div>';
 
             axios({
                 method: 'GET',
-                url: 'http://localhost:4200/ordenes/disponibles'
+                url: 'http://localhost:4201/ordenes/disponibles'
             })
                 .then(res => {
                     let ordenesDisponibles = res.data;
@@ -42,9 +42,9 @@ function cambiarSection(valor) {
                     ordenesDisponibles.forEach(orden => {
                         sectionActual.innerHTML +=
                             `<div class="p-1">
-                                <div class="borde-azul p-1 radius contenedor-verOrdenes">
+                                <div class="borde p-1 radius contenedor-verOrdenes">
                                     <h4 class="pl-2 texto-gris mt-2">${orden.nombre}</h4>
-                                    <button class="boton boton-naranja" onclick="abrirOrden(1); dibujarContenido(1, '${orden._id}');">ver orden</button>
+                                    <button class="boton boton1" onclick="abrirOrden(1); dibujarContenido(1, '${orden._id}');">ver orden</button>
                                 </div>
                             </div>`;
                     });
@@ -53,11 +53,11 @@ function cambiarSection(valor) {
             break;
 
         case 2:
-            sectionActual.innerHTML = '<div class="titulo-section borde-naranja px-1">Órdenes sin entregar</div>';
+            sectionActual.innerHTML = '<div class="titulo-section borde px-1">Órdenes sin entregar</div>';
 
             axios({
                 method: 'GET',
-                url: `http://localhost:4200/ordenes/sinEntregar/${idRepartidor}`
+                url: `http://localhost:4201/ordenes/sinEntregar/${idRepartidor}`
             })
                 .then(res => {
                     let ordenesSinEntregar = res.data;
@@ -65,9 +65,9 @@ function cambiarSection(valor) {
                     ordenesSinEntregar.forEach(orden => {
                         sectionActual.innerHTML +=
                             `<div class="p-1">
-                    <div class="borde-azul p-1 radius contenedor-verOrdenes">
+                    <div class="borde p-1 radius contenedor-verOrdenes">
                         <h4 class="pl-2 texto-gris mt-2">${orden.nombre}</h4>
-                        <button class="boton boton-naranja" onclick="abrirOrden(2); dibujarContenido(2, '${orden._id}');">ver orden</button>
+                        <button class="boton boton1" onclick="abrirOrden(2); dibujarContenido(2, '${orden._id}');">ver orden</button>
                     </div>
                 </div>`;
                     });
@@ -76,11 +76,11 @@ function cambiarSection(valor) {
             break;
 
         case 3:
-            sectionActual.innerHTML = '<div class="titulo-section borde-naranja px-1">Órdenes entregadas</div>';
+            sectionActual.innerHTML = '<div class="titulo-section borde px-1">Órdenes entregadas</div>';
 
             axios({
                 method: 'GET',
-                url: `http://localhost:4200/ordenes/entregadas/${idRepartidor}`
+                url: `http://localhost:4201/ordenes/entregadas/${idRepartidor}`
             })
                 .then(res => {
                     let ordenesEntregadas = res.data
@@ -88,9 +88,9 @@ function cambiarSection(valor) {
                     ordenesEntregadas.forEach(orden => {
                         sectionActual.innerHTML +=
                             `<div class="p-1">
-                                <div class="borde-azul p-1 radius contenedor-verOrdenes">
+                                <div class="borde p-1 radius contenedor-verOrdenes">
                                     <h4 class="pl-2 texto-gris mt-2">${orden.nombre}</h4>
-                                    <button class="boton boton-naranja" onclick="abrirOrden(3); dibujarContenido(3, '${orden._id}');">ver orden</button>
+                                    <button class="boton boton1" onclick="abrirOrden(3); dibujarContenido(3, '${orden._id}');">ver orden</button>
                                 </div>
                             </div>`;
                     });
@@ -132,7 +132,7 @@ function dibujarContenido(valor, idOrden) {
 
     axios({
         method: 'GET',
-        url: `http://localhost:4200/ordenes/${idOrden}`
+        url: `http://localhost:4201/ordenes/${idOrden}`
     })
         .then(res => {
             ordenActual = res.data;
@@ -144,9 +144,9 @@ function dibujarContenido(valor, idOrden) {
             switch (valor) {
                 case 1:
                     sectionActual.innerHTML =
-                        `<div class="titulo-section borde-naranja px-1">Detalle de la orden "${ordenActual.nombre}"</div>
-                    <div class="borde-naranja row mt-3 subsection pt-3">
-                        <div class="titulo-section borde-naranja px-1">Información del cliente</div>
+                        `<div class="titulo-section borde px-1">Detalle de la orden "${ordenActual.nombre}"</div>
+                    <div class="borde row mt-3 subsection pt-3">
+                        <div class="titulo-section borde px-1">Información del cliente</div>
                         <div class="col-12 col-md-6">
                             <h6>Nombre:</h6>
                             <h6 class="texto-gris ml-5">${ordenActual.cliente.nombre}</h6>
@@ -160,8 +160,8 @@ function dibujarContenido(valor, idOrden) {
                             <h6 class="texto-gris ml-5">${ordenActual.cliente.correo}</h6>
                         </div>
                     </div>
-                    <div class="borde-naranja row mt-4 subsection py-3">
-                        <div class="titulo-section borde-naranja px-1">Detalle del envío</div>
+                    <div class="borde row mt-4 subsection py-3">
+                        <div class="titulo-section borde px-1">Detalle del envío</div>
                         <div class="col-12 col-md-6">
                             <h6>Productos:</h6>
                             <h6 class="texto-gris ml-5">${productos}</h6>
@@ -177,10 +177,10 @@ function dibujarContenido(valor, idOrden) {
                         <div class="col-12">
                             <h6>Dirección:</h6>
                             <h6 class="texto-gris pl-5">${ordenActual.envio.direccion}</h6>
-                            <div id="mapa" style="width: 100%; height: 200px;" class="borde-verde"></div>
+                            <div id="mapa" style="width: 100%; height: 200px;" class="borde"></div>
                         </div>
                     </div>
-                    <button class="boton boton-naranja float-right mt-2 mr-2" onclick="tomarOrden('${idOrden}');">Tomar orden</button>`;
+                    <button class="boton boton1 float-right mt-2 mr-2" onclick="tomarOrden('${idOrden}');">Tomar orden</button>`;
 
                     cargarMapa(ordenActual.envio.coordenadas.longitud, ordenActual.envio.coordenadas.latitud);
 
@@ -188,9 +188,9 @@ function dibujarContenido(valor, idOrden) {
 
                 case 2:
                     sectionActual.innerHTML =
-                        `<div class="titulo-section borde-naranja px-1">Detalle de la orden "${ordenActual.nombre}"</div>
-                    <div class="borde-naranja row mt-3 subsection pt-3">
-                        <div class="titulo-section borde-naranja px-1">Información del cliente</div>
+                        `<div class="titulo-section borde px-1">Detalle de la orden "${ordenActual.nombre}"</div>
+                    <div class="borde row mt-3 subsection pt-3">
+                        <div class="titulo-section borde px-1">Información del cliente</div>
                         <div class="col-12 col-md-6">
                             <h6>Nombre:</h6>
                             <h6 class="texto-gris ml-5">${ordenActual.cliente.nombre}</h6>
@@ -204,8 +204,8 @@ function dibujarContenido(valor, idOrden) {
                             <h6 class="texto-gris ml-5">${ordenActual.cliente.correo}</h6>
                         </div>
                     </div>
-                    <div class="borde-naranja row mt-4 subsection py-3">
-                        <div class="titulo-section borde-naranja px-1">Detalle del envío</div>
+                    <div class="borde row mt-4 subsection py-3">
+                        <div class="titulo-section borde px-1">Detalle del envío</div>
                         <div class="col-12 col-md-6">
                             <h6>Productos:</h6>
                             <h6 class="texto-gris ml-5">${productos}</h6>
@@ -221,19 +221,19 @@ function dibujarContenido(valor, idOrden) {
                         <div class="col-12 mb-3">
                             <h6>Dirección:</h6>
                             <h6 class="texto-gris ml-5">${ordenActual.envio.direccion}</h6>
-                            <div id="mapa2" style="width: 100%; height: 200px;" class="borde-verde"></div>
+                            <div id="mapa2" style="width: 100%; height: 200px;" class="borde"></div>
                         </div>
                         <div class="col-12 col-md-6">
                             <h6>Estado de la orden:</h6>
                         </div>
                         <div class="col-12 col-md-6 row mb-2 mx-auto">
-                            <div class="col-6 p-1 text-center"><button id="boton-tomada" class="boton boton-rojo botones-entregando orden-tomada" onclick="estadoOrden('tomada', '${idOrden}');">Tomada</button></div>
-                            <div class="col-6 p-1 text-center"><button id="boton-enCamino" class="boton borde-naranja botones-entregando orden-enCamino" onclick="estadoOrden('enCamino', '${idOrden}');">En camino</button></div>
-                            <div class="col-6 p-1 text-center"><button id="boton-enOrigen" class="boton borde-naranja botones-entregando orden-enOrigen" onclick="estadoOrden('enOrigen', '${idOrden}');">En origen</button></div>
-                            <div class="col-6 p-1 text-center"><button id="boton-enDestino" class="boton borde-naranja botones-entregando orden-enDestino" onclick="estadoOrden('enDestino', '${idOrden}');">En destino</button></div>
+                            <div class="col-6 p-1 text-center"><button id="boton-tomada" class="boton boton2 botones-entregando orden-tomada" onclick="estadoOrden('tomada', '${idOrden}');">Tomada</button></div>
+                            <div class="col-6 p-1 text-center"><button id="boton-enCamino" class="boton borde botones-entregando orden-enCamino" onclick="estadoOrden('enCamino', '${idOrden}');">En camino</button></div>
+                            <div class="col-6 p-1 text-center"><button id="boton-enOrigen" class="boton borde botones-entregando orden-enOrigen" onclick="estadoOrden('enOrigen', '${idOrden}');">En origen</button></div>
+                            <div class="col-6 p-1 text-center"><button id="boton-enDestino" class="boton borde botones-entregando orden-enDestino" onclick="estadoOrden('enDestino', '${idOrden}');">En destino</button></div>
                         </div>
                     </div>
-                    <button class="boton boton-naranja float-right mt-2 mr-2" onclick="estadoOrden('entregada', '${idOrden}');">Orden entregada</button>`;
+                    <button class="boton boton1 float-right mt-2 mr-2" onclick="estadoOrden('entregada', '${idOrden}');">Orden entregada</button>`;
 
                     cargarMapa2(ordenActual.envio.coordenadas.longitud, ordenActual.envio.coordenadas.latitud);
                     actualizarBotones(idOrden);
@@ -242,7 +242,7 @@ function dibujarContenido(valor, idOrden) {
 
                 case 3:
                     sectionActual.innerHTML =
-                        `<div class="titulo-section borde-naranja px-1">Detalle de la entrega</div>
+                        `<div class="titulo-section borde px-1">Detalle de la entrega</div>
                     <div class="row px-3">
                         <div class="col-12 col-md-6 py-1">
                             <h6>Orden:</h6>
@@ -281,7 +281,7 @@ function dibujarContenido(valor, idOrden) {
                             <h6 class="texto-gris ml-5">${ordenActual.envio.comisionAdministrador.toFixed(2)} Lps.</h6>
                         </div>
                         <div class="col-12 py-1">
-                            <button class="boton boton-naranja float-right mr-1" onclick="irAtras();">Aceptar</button>
+                            <button class="boton boton1 float-right mr-1" onclick="irAtras();">Aceptar</button>
                         </div>
                     </div>`;
             }
@@ -293,7 +293,7 @@ function tomarOrden(idOrden) {
 
     axios({
         method: 'PUT',
-        url: `http://localhost:4200/ordenes/${idOrden}`,
+        url: `http://localhost:4201/ordenes/${idOrden}`,
         data: { _id: idRepartidor }
     })
         .then(res => {
@@ -303,12 +303,12 @@ function tomarOrden(idOrden) {
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
                 <div class="text-center">
-                    <button class="boton boton-blanco borde-verde my-4" onclick="llamarModal('hide'); irAtras(); cambiarSection(1);"><h5 class="p-0 m-0">Aceptar</h5></button>
+                    <button class="boton boton2 borde my-4" onclick="llamarModal('hide'); irAtras(); cambiarSection(1);"><h5 class="p-0 m-0">Aceptar</h5></button>
                 </div>`;
 
-            modalRepartidor.parentNode.classList.add('borde-verde');
-            modalRepartidor.parentNode.classList.remove('borde-rojo');
-            modalRepartidor.parentNode.classList.remove('borde-naranja');
+            modalRepartidor.parentNode.classList.add('borde');
+            modalRepartidor.parentNode.classList.remove('borde');
+            modalRepartidor.parentNode.classList.remove('borde');
 
             llamarModal('show');
         })
@@ -319,12 +319,12 @@ function tomarOrden(idOrden) {
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
                 <div class="text-center">
-                    <button class="boton boton-blanco borde-verde my-4" onclick="llamarModal('hide'); irAtras(); cambiarSection(1);"><h5 class="p-0 m-0">Aceptar</h5></button>
+                    <button class="boton boton2 borde my-4" onclick="llamarModal('hide'); irAtras(); cambiarSection(1);"><h5 class="p-0 m-0">Aceptar</h5></button>
                 </div>`;
 
-            modalRepartidor.parentNode.classList.remove('borde-verde');
-            modalRepartidor.parentNode.classList.add('borde-rojo');
-            modalRepartidor.parentNode.classList.remove('borde-naranja');
+            modalRepartidor.parentNode.classList.remove('borde');
+            modalRepartidor.parentNode.classList.add('borde');
+            modalRepartidor.parentNode.classList.remove('borde');
 
             llamarModal('show');
         })
@@ -334,7 +334,7 @@ function tomarOrden(idOrden) {
 function estadoOrden(estado, idOrden) {
     axios({
         method: 'GET',
-        url: `http://localhost:4200/ordenes/${idOrden}`
+        url: `http://localhost:4201/ordenes/${idOrden}`
     })
         .then(res => {
             let o = res.data;
@@ -342,11 +342,11 @@ function estadoOrden(estado, idOrden) {
             if (estado != 'entregada') {
                 let botones = document.getElementsByClassName('botones-entregando');
                 Array.from(botones).forEach(boton => {
-                    boton.classList.add('borde-naranja');
-                    boton.classList.remove('boton-rojo');
+                    boton.classList.add('borde');
+                    boton.classList.remove('boton2');
                 });
-                document.getElementById(`boton-${estado}`).classList.add('boton-rojo');
-                document.getElementById(`boton-${estado}`).classList.remove('borde-naranja');
+                document.getElementById(`boton-${estado}`).classList.add('boton2');
+                document.getElementById(`boton-${estado}`).classList.remove('borde');
 
                 o.envio.estado = estado;
 
@@ -360,8 +360,8 @@ function estadoOrden(estado, idOrden) {
                 });
 
                 modalRepartidor.innerHTML =
-                    `<div class="borde-naranja pt-4 subsection-2 mx-auto my-2 row">
-                    <div class="titulo-section borde-naranja px-1">Factura</div>
+                    `<div class="borde pt-4 subsection-2 mx-auto my-2 row">
+                    <div class="titulo-section borde px-1">Factura</div>
                     <div class="col-12 py-1">
                         <h6>Cliente:</h6>
                         <h6 class="texto-gris ml-5">${o.cliente.nombre}</h6>
@@ -403,13 +403,13 @@ function estadoOrden(estado, idOrden) {
                         <h6 class="texto-gris ml-5">${o.envio.comisionAdministrador.toFixed(2)} Lps.</h6>
                     </div>
                     <div class="col-12 py-1 text-center">
-                        <button class="boton boton-naranja text-center"><h5 class="b-0 m-0" onclick="llamarModal('hide'); irAtras(); cambiarSection(2);">Finalizado</h5></button>
+                        <button class="boton boton1 text-center"><h5 class="b-0 m-0" onclick="llamarModal('hide'); irAtras(); cambiarSection(2);">Finalizado</h5></button>
                     </div>
                 </div>`;
 
-                modalRepartidor.parentNode.classList.remove('borde-verde');
-                modalRepartidor.parentNode.classList.remove('borde-rojo');
-                modalRepartidor.parentNode.classList.add('borde-naranja');
+                modalRepartidor.parentNode.classList.remove('borde');
+                modalRepartidor.parentNode.classList.remove('borde');
+                modalRepartidor.parentNode.classList.add('borde');
 
                 llamarModal('show');
 
@@ -417,7 +417,7 @@ function estadoOrden(estado, idOrden) {
 
             axios({
                 method: 'PUT',
-                url: `http://localhost:4200/ordenes/tomada/${idOrden}`,
+                url: `http://localhost:4201/ordenes/tomada/${idOrden}`,
                 data: o
             })
 
@@ -428,17 +428,17 @@ function actualizarBotones(idOrden) {
 
     axios({
         method: 'GET',
-        url: `http://localhost:4200/ordenes/${idOrden}`
+        url: `http://localhost:4201/ordenes/${idOrden}`
     })
         .then(res => {
             let estado = res.data.envio.estado;
             let botones = document.getElementsByClassName('botones-entregando');
             Array.from(botones).forEach(boton => {
-                boton.classList.add('borde-naranja');
-                boton.classList.remove('boton-rojo');
+                boton.classList.add('borde');
+                boton.classList.remove('boton2');
             });
-            document.getElementById(`boton-${estado}`).classList.add('boton-rojo');
-            document.getElementById(`boton-${estado}`).classList.remove('borde-naranja');
+            document.getElementById(`boton-${estado}`).classList.add('boton2');
+            document.getElementById(`boton-${estado}`).classList.remove('borde');
         })
 }
 
@@ -457,8 +457,8 @@ function editUser() {
     modalRepartidor.innerHTML = 
         `<div class="row my-4 mx-2">
             <h4 class="col-12 text-center titulo-modal mb-4">¿Qué quieres cambiar?</h4>
-            <button class="boton boton-verde col-12" style="height: 50px;" onclick="editarUsuario();">Cambiar usuario</button>
-            <button class="boton boton-naranja col-12" style="height: 50px;" onclick="editarPassword();">Cambiar contraseña</button>
+            <button class="boton boton2 col-12" style="height: 50px;" onclick="editarUsuario();">Cambiar usuario</button>
+            <button class="boton boton1 col-12" style="height: 50px;" onclick="editarPassword();">Cambiar contraseña</button>
         </div>`;
     abrirModal();
 }
@@ -468,19 +468,19 @@ function editarUsuario() {
         `<h4 class="text-center titulo-modal mt-4">Editar usuario</h4>
         <div>
             <h5 class="mt-3 text-left">Usuario actual:</h5>
-            <input type="text" class="form-control borde-naranja" id="txtusuarioActual" required>
+            <input type="text" class="form-control borde" id="txtusuarioActual" required>
         </div>
         <div>
             <h5 class="mt-3 text-left">Nuevo usuario:</h5>
-            <input type="text" class="form-control borde-naranja" id="txtusuarioNuevo" required>
+            <input type="text" class="form-control borde" id="txtusuarioNuevo" required>
         </div>
         <div>
             <h5 class="mt-3 text-left">Escribe tu contraseña:</h5>
-            <input type="password" class="form-control borde-naranja" id="txtpassword" required>
+            <input type="password" class="form-control borde" id="txtpassword" required>
         </div>
         <div class="text-center mb-4">
-            <button class="boton boton-verde mt-3" onclick="verificarCambioUsuario();">Aceptar</button>
-            <button class="boton boton-blanco mt-3" onclick="llamarModal('hide');">Cancelar</button>
+            <button class="boton boton2 mt-3" onclick="verificarCambioUsuario();">Aceptar</button>
+            <button class="boton boton2 mt-3" onclick="llamarModal('hide');">Cancelar</button>
         </div>`;
 }
 
@@ -489,23 +489,23 @@ function editarPassword() {
         `<h4 class="text-center titulo-modal mt-4">Editar contraseña</h4>
         <div>
             <h5 class="mt-3 text-left">Usuario:</h5>
-            <input type="text" class="form-control borde-naranja" id="txtusuarioActual" required>
+            <input type="text" class="form-control borde" id="txtusuarioActual" required>
         </div>
         <div>
             <h5 class="mt-3 text-left">Contraseña actual:</h5>
-            <input type="password" class="form-control borde-naranja" id="txtpasswordActual" required>
+            <input type="password" class="form-control borde" id="txtpasswordActual" required>
         </div>
         <div>
             <h5 class="mt-3 text-left">Nueva contraseña:</h5>
-            <input type="password" class="form-control borde-naranja" id="txtpasswordNuevo" required>
+            <input type="password" class="form-control borde" id="txtpasswordNuevo" required>
         </div>
         <div>
             <h5 class="mt-3 text-left">Nueva contraseña (de nuevo):</h5>
-            <input type="password" class="form-control borde-naranja" id="txtpasswordNuevo2" required>
+            <input type="password" class="form-control borde" id="txtpasswordNuevo2" required>
         </div>
         <div class="text-center mb-4">
-            <button class="boton boton-verde mt-2" onclick="verificarCambioPassword();">Aceptar</button>
-            <button class="boton boton-blanco mt-2" onclick="llamarModal('hide');">Cancelar</button>
+            <button class="boton boton2 mt-2" onclick="verificarCambioPassword();">Aceptar</button>
+            <button class="boton boton2 mt-2" onclick="llamarModal('hide');">Cancelar</button>
         </div>`;
 }
 
@@ -523,41 +523,41 @@ function verificarCambioUsuario() {
     
         axios({
             method: 'POST',
-            url: 'http://localhost:4200/usuarios/login/B',
+            url: 'http://localhost:4201/usuarios/login/B',
             data: usuario
         })
             .then(res => {
                 if (res.data.codigo == 0) {
-                    modalRepartidor2.parentNode.classList.remove('borde-naranja');
-                    modalRepartidor2.parentNode.classList.remove('borde-verde');
-                    modalRepartidor2.parentNode.classList.add('borde-rojo');
+                    modalRepartidor2.parentNode.classList.remove('borde');
+                    modalRepartidor2.parentNode.classList.remove('borde');
+                    modalRepartidor2.parentNode.classList.add('borde');
                     modalRepartidor2.innerHTML =
                         `<h5 class="titulo-modal my-4 text-center">Usuario actual o contraseña incorrectas</h5>
                         <div class="error my-3 text-center">
                             <i class="fa-solid fa-circle-xmark"></i>
                         </div>
                         <div class="text-center">
-                        <button class="boton boton-blanco borde-rojo my-4" onclick="cerrarModal2(); llamarModal('show')">Aceptar</button>
+                        <button class="boton boton2 borde my-4" onclick="cerrarModal2(); llamarModal('show')">Aceptar</button>
                         </div>`;
                     llamarModal('hide');
                     abrirModal2();
                 } else {
                     axios({
                         method: 'PUT',
-                        url: `http://localhost:4200/usuarios/usuario/${idRepartidor}`,
+                        url: `http://localhost:4201/usuarios/usuario/${idRepartidor}`,
                         data: {usuario: nuevoUsuario}
                     })
                         .then(() => {
-                            modalRepartidor2.parentNode.classList.remove('borde-naranja');
-                            modalRepartidor2.parentNode.classList.add('borde-verde');
-                            modalRepartidor2.parentNode.classList.remove('borde-rojo');
+                            modalRepartidor2.parentNode.classList.remove('borde');
+                            modalRepartidor2.parentNode.classList.add('borde');
+                            modalRepartidor2.parentNode.classList.remove('borde');
                             modalRepartidor2.innerHTML =
                                 `<h5 class="titulo-modal my-4 text-center">¡Usuario actualizado!</h5>
                                 <div class="check my-3 text-center">
                                     <i class="fa-solid fa-circle-check"></i>
                                 </div>
                                 <div class="text-center">
-                                    <button class="boton boton-blanco borde-verde my-4" onclick="cerrarModal2();">Aceptar</button>
+                                    <button class="boton boton2 borde my-4" onclick="cerrarModal2();">Aceptar</button>
                                 </div>`;
                             llamarModal('hide');
                             abrirModal2();
@@ -576,16 +576,16 @@ function verificarCambioPassword() {
 
     if(usuarioActual != '' && password != '' && passwordNuevo != '' && passwordNuevo2 != '') {
         if (passwordNuevo != passwordNuevo2) {
-            modalRepartidor2.parentNode.classList.remove('borde-naranja');
-            modalRepartidor2.parentNode.classList.remove('borde-verde');
-            modalRepartidor2.parentNode.classList.add('borde-rojo');
+            modalRepartidor2.parentNode.classList.remove('borde');
+            modalRepartidor2.parentNode.classList.remove('borde');
+            modalRepartidor2.parentNode.classList.add('borde');
             modalRepartidor2.innerHTML =
                 `<h5 class="titulo-modal my-4 text-center">Las contraseñas no coinciden</h5>
                 <div class="error my-3 text-center">
                     <i class="fa-solid fa-circle-xmark"></i>
                 </div>
                 <div class="text-center">
-                    <button class="boton boton-blanco borde-rojo my-4" onclick="cerrarModal2(); llamarModal('show')">Aceptar</button>
+                    <button class="boton boton2 borde my-4" onclick="cerrarModal2(); llamarModal('show')">Aceptar</button>
                 </div>`;
             llamarModal('hide');
             abrirModal2();
@@ -598,41 +598,41 @@ function verificarCambioPassword() {
         
             axios({
                 method: 'POST',
-                url: 'http://localhost:4200/usuarios/login/B',
+                url: 'http://localhost:4201/usuarios/login/B',
                 data: usuario
             })
                 .then(res => {
                     if (res.data.codigo == 0) {
-                        modalRepartidor2.parentNode.classList.remove('borde-naranja');
-                        modalRepartidor2.parentNode.classList.remove('borde-verde');
-                        modalRepartidor2.parentNode.classList.add('borde-rojo');
+                        modalRepartidor2.parentNode.classList.remove('borde');
+                        modalRepartidor2.parentNode.classList.remove('borde');
+                        modalRepartidor2.parentNode.classList.add('borde');
                         modalRepartidor2.innerHTML =
                             `<h5 class="titulo-modal my-4 text-center">Usuario actual o contraseña incorrectas</h5>
                             <div class="error my-3 text-center">
                                 <i class="fa-solid fa-circle-xmark"></i>
                             </div>
                             <div class="text-center">
-                                <button class="boton boton-blanco borde-rojo my-4" onclick="cerrarModal2(); llamarModal('show')">Aceptar</button>
+                                <button class="boton boton2 borde my-4" onclick="cerrarModal2(); llamarModal('show')">Aceptar</button>
                             </div>`;
                         llamarModal('hide');
                         abrirModal2();
                     } else {
                         axios({
                             method: 'PUT',
-                            url: `http://localhost:4200/usuarios/password/${idRepartidor}`,
+                            url: `http://localhost:4201/usuarios/password/${idRepartidor}`,
                             data: {password: passwordNuevo}
                         })
                         .then(() => {
-                            modalRepartidor2.parentNode.classList.remove('borde-naranja');
-                            modalRepartidor2.parentNode.classList.add('borde-verde');
-                            modalRepartidor2.parentNode.classList.remove('borde-rojo');
+                            modalRepartidor2.parentNode.classList.remove('borde');
+                            modalRepartidor2.parentNode.classList.add('borde');
+                            modalRepartidor2.parentNode.classList.remove('borde');
                             modalRepartidor2.innerHTML =
                                 `<h5 class="titulo-modal my-4 text-center">¡Contraseña actualizada!</h5>
                                 <div class="check my-3 text-center">
                                     <i class="fa-solid fa-circle-check"></i>
                                 </div>
                                 <div class="text-center">
-                                    <button class="boton boton-blanco borde-verde my-4" onclick="cerrarModal2();">Aceptar</button>
+                                    <button class="boton boton2 borde my-4" onclick="cerrarModal2();">Aceptar</button>
                                 </div>`;
                             llamarModal('hide');
                             abrirModal2();
@@ -646,9 +646,9 @@ function verificarCambioPassword() {
 
 function cerrarModal2() {
     $('#modal2').modal('hide');
-    modalRepartidor2.parentNode.classList.add('borde-naranja');
-    modalRepartidor2.parentNode.classList.remove('borde-verde');
-    modalRepartidor2.parentNode.classList.remove('borde-rojo');
+    modalRepartidor2.parentNode.classList.add('borde');
+    modalRepartidor2.parentNode.classList.remove('borde');
+    modalRepartidor2.parentNode.classList.remove('borde');
 }
 
 function abrirModal2() {

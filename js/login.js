@@ -12,7 +12,7 @@ function validarFormulario1() {
 
         axios({
             method: 'POST',
-            url: 'http://localhost:4200/usuarios/login/B',
+            url: 'http://localhost:4201/usuarios/login/B',
             data: usuario
         })
             .then(res => {
@@ -22,10 +22,10 @@ function validarFormulario1() {
                     <div class="error my-3">
                         <i class="fa-solid fa-circle-xmark"></i>
                     </div>
-                    <button class="boton boton-blanco borde-rojo my-4" onclick="cerrarModal();">Aceptar</button>`;
+                    <button class="boton boton2 borde my-4" onclick="cerrarModal();">Aceptar</button>`;
                     abrirModal();
                 } else {
-                    window.open(`repartidor.html?ses=${res.data.idSession}&id=${res.data.id}&nom=${res.data.nombre}`, '_self')
+                    window.open(`motoristas.html?ses=${res.data.idSession}&id=${res.data.id}&nom=${res.data.nombre}`, '_self')
                 }
                 
             })
@@ -59,7 +59,7 @@ function validarFormulario2() {
 
         axios({
             method: 'POST',
-            url: 'http://localhost:4200/usuarios/registro/B',
+            url: 'http://localhost:4201/usuarios/registro/B',
             data: usuario
         })
             .then(res => {
@@ -69,17 +69,17 @@ function validarFormulario2() {
                     <div class="error my-3">
                         <i class="fa-solid fa-circle-xmark"></i>
                     </div>
-                    <button class="boton boton-blanco borde-rojo my-4" onclick="cerrarModal();">Aceptar</button>`;
+                    <button class="boton boton2 borde my-4" onclick="cerrarModal();">Aceptar</button>`;
                     abrirModal();
                 } else {
-                    modalBodySesion.parentNode.classList.add('borde-verde');
-                    modalBodySesion.parentNode.classList.remove('borde-rojo');
+                    modalBodySesion.parentNode.classList.add('borde');
+                    modalBodySesion.parentNode.classList.remove('borde');
                     modalBodySesion.innerHTML =
                         `<h5 class="titulo-modal my-4">${res.data.mensaje}</h5>
                         <div class="check my-3">
                             <i class="fa-solid fa-circle-check"></i>
                         </div>
-                        <button class="boton boton-blanco borde-verde my-4" onclick="cerrarModal();">Aceptar</button>`;
+                        <button class="boton boton2 borde my-4" onclick="cerrarModal();">Aceptar</button>`;
                 }
                 
             })
@@ -93,8 +93,8 @@ function abrirModal() {
 
 function cerrarModal() {
     $('#modal').modal('hide');
-    modalBodySesion.parentNode.classList.remove('borde-verde');
-    modalBodySesion.parentNode.classList.add('borde-rojo');
+    modalBodySesion.parentNode.classList.remove('borde');
+    modalBodySesion.parentNode.classList.add('borde');
 }
 
 //######################

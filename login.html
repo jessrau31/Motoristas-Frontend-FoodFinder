@@ -6,24 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.23.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a1e3709f1d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a1e3709f1d.js" crossorigin="anonymous"></script>
-    
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/clases.css">
     <link rel="stylesheet" href="css/login.css">
-    <link rel="icon" href="img/logoff2.png" sizes="any" type="image/svg+xml">
-
-    <title>Food Finder - Login Motorista</title>
+    <link rel="icon" href="img/logoff.png" sizes="any" type="image/svg+xml">
     <script src="https://kit.fontawesome.com/eab2776de6.js"crossorigin="anonymous"></script>
+    <title>Repartidores | Food Finder</title>
+    
 </head>
 <body>
     <img id="logo" src="img/logoff.png" alt="Logo">
@@ -37,8 +35,8 @@
                 <input class="text-login form-control" type="password" id="txtpassword-login" placeholder="Contraseña" required>
             </div>
             <div class="contenedor-botones">
-                <button class="boton boton-naranja" onclick="validarFormulario1();">Iniciar sesión</button>
-                <button class="boton boton-blanco" onclick="abrirRegistro();"> Registrarse</button>
+                <button class="boton boton1" onclick="validarFormulario1();">Iniciar sesión</button>
+                <button class="boton boton2" onclick="abrirRegistro();"> Registrarse</button>
             </div>
         </section>
         <section class="sections-login" id="section-registration">
@@ -51,25 +49,16 @@
                 <input class="text-login form-control mb-3" type="password" id="txtpassword-registration" placeholder="Contraseña" required>
             </div>
             <div class="contenedor-botones">
-                <br><br><br><button class="boton boton-naranja mb-1" onclick="validarFormulario2();">Crear cuenta</button>
-                <button class="boton boton-blanco" onclick="abrirLogin();">Iniciar sesión</button><br>
+                <br><br><br><button class="boton boton1 mb-1" onclick="validarFormulario2();">Crear cuenta</button>
+                <button class="boton boton2" onclick="abrirLogin();">Iniciar sesión</button><br>
             </div>
         </section>
     </div>
-    
-    <footer>
-        <div id="redes-footer">
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-tiktok"></i>
-        </div>
-    </footer>
 
     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content borde-rojo">
+            <div class="modal-content borde">
                 <div id="modal-body-sesion" class="modal-body">  
                 </div>
             </div>

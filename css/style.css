@@ -22,7 +22,7 @@ header {
 
 #botones-header * {
     color: #F27294;
-    background-color: #bd202500;
+    background-color: white;
     border-radius: 5px;
     height: 50px;
     width: 50px;
@@ -46,7 +46,7 @@ header {
     position: absolute;
     top: -35px;
     left: 130px;
-    /*background-color: white;*/
+    color: white;
     border-radius: 3px;
     font-weight: bold;
     font-size: 25px;     
